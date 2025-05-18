@@ -1,0 +1,234 @@
+__label__fiyat_sorgulama fiyatını nedir
+__label__fiyat_sorgulama bunun fiyat
+__label__fiyat_sorgulama fiyat
+__label__fiyat_sorgulama ücreti ne kadar acaba
+__label__fiyat_sorgulama kaç para bu
+__label__fiyat_sorgulama bu modelin fiyatını öğrenebilir miyim
+__label__fiyat_sorgulama ne kadar tutar
+__label__fiyat_sorgulama yıllık ne kadar öderim
+__label__fiyat_sorgulama bana maliyeti ne olur
+__label__fiyat_sorgulama fiyatı nedir
+__label__fiyat_sorgulama ne kadar?
+__label__fiyat_sorgulama fiyat öğrenebilir miyim
+__label__fiyat_sorgulama bu ne kadar acaba
+__label__fiyat_sorgulama kaça satıyorsunuz bunu
+__label__fiyat_sorgulama etiket fiyatı nedir
+__label__fiyat_sorgulama son fiyat ne olur
+__label__fiyat_sorgulama indirimli fiyatı var mı
+__label__fiyat_sorgulama bana kaça gelir
+__label__fiyat_sorgulama bunun maliyeti nedir
+__label__fiyat_sorgulama fiyat bilgisi alabilir miyim
+__label__fiyat_sorgulama güncel fiyat listesi var mı
+__label__fiyat_sorgulama peki ya şunun fiyatı
+
+
+__label__selamlama merhaba nasılsınız
+__label__selamlama selamlar iyi çalışmalar
+__label__selamlama günaydın kolay gelsin
+__label__selamlama iyi akşamlar
+__label__selamlama merhabalar
+__label__selamlama iyi günler 
+__label__selamlama mrb
+__label__selamlama slm 
+__label__selamlama sa 
+__label__selamlama selamun aleykum
+__label__selamlama merhaba size bir sorum olacaktı
+__label__selamlama selam nasılsınız yardımcı olabilir misiniz
+__label__selamlama kolay gelsin bir şey danışacaktım
+__label__selamlama iyi günler bir konuda bilgi almak istiyorum
+__label__selamlama merhabalar size nasıl ulaşabilirim diye soracaktım (tel_no_sorma'ya da gidebilir, bağlama göre)
+__label__selamlama hey
+__label__selamlama naber (argo, duruma göre)
+
+
+__label__tesekkur teşekkür ederim bilgilendirme için
+__label__tesekkur sağ olun yardımınız için
+__label__tesekkur çok teşekkürler harikasınız
+__label__tesekkur tşk
+__label__tesekkur eyvallah
+__label__tesekkur sağolun
+__label__tesekkur teşekkürler
+__label__tesekkur çok yardımcı oldunuz teşekkürler
+__label__tesekkur bilgiler için minnettarım
+__label__tesekkur tamamdır teşekkür ettim
+__label__tesekkur anladım sağ olun
+__label__tesekkur harika bilgiler için teşekkürler
+
+
+__label__olumsuz_yanıt hayır istemiyorum teşekkürler
+__label__olumsuz_yanıt yok kalsın ilgilenmiyorum
+__label__olumsuz_yanıt gerek yok şu an
+__label__olumsuz_yanıt hayır almayayım
+__label__olumsuz_yanıt düşünmüyorum
+__label__olumsuz_yanıt yok sağolun 
+__label__olumsuz_yanıt hayır 
+__label__olumsuz_yanıt hayır teşekkürler başka bir şey sormayacağım
+__label__olumsuz_yanıt şimdilik kalsın ilgilenmiyorum
+__label__olumsuz_yanıt şu an için gerek yok sağ olun
+__label__olumsuz_yanıt yok ben almayayım
+__label__olumsuz_yanıt bu değil aradığım
+__label__olumsuz_yanıt kalsın istemiyorum
+
+
+__label__lokasyon_sorma konumunuz nerede acaba tam olarak
+__label__lokasyon_sorma adresiniz neydi
+__label__lokasyon_sorma dükkanınız hangi adreste
+__label__lokasyon_sorma mağazanız istanbul'un neresinde
+__label__lokasyon_sorma kadıköy'deki yerinizi tarif eder misiniz
+__label__lokasyon_sorma harita konumu var mı
+__label__lokasyon_sorma google maps linki alabilir miyim (maps_link için)
+__label__lokasyon_sorma şubeniz var mı başka ilçelerde
+__label__lokasyon_sorma yeriniz tam olarak nerede kalıyor
+__label__lokasyon_sorma mağazanıza nasıl gelebilirim
+__label__lokasyon_sorma dükkanınızın açık adresi nedir
+__label__lokasyon_sorma harita üzerinde gösterebilir misiniz (maps_link için)
+__label__lokasyon_sorma en yakın şubeniz nerede
+__label__lokasyon_sorma başka şubeleriniz var mı bu şehirde
+__label__lokasyon_sorma fiziksel mağazanız mevcut mu
+__label__lokasyon_sorma sadece online mı satış yapıyorsunuz
+
+__label__stok_sorgulama bu modelin 42'si kaldı mı acaba (product_link'e yönlendir)
+__label__stok_sorgulama medium beden ipek gömlek mevcut mu (product_link'e yönlendir)
+__label__stok_sorgulama o deri ceketten hala var mı (product_link'e yönlendir)
+__label__stok_sorgulama bu ayakkabının stok durumunu öğrenebilir miyim (product_link'e yönlendir)
+__label__stok_sorgulama large beden tükenmiş miydi (product_link'e yönlendir)
+__label__stok_sorgulama bu modelin stoğu var mı
+__label__stok_sorgulama x ürünü hala mevcut mu
+__label__stok_sorgulama o elbiseden kaldı mı elinizde
+__label__stok_sorgulama stok durumunu öğrenebilir miyim
+__label__stok_sorgulama bu ayakkabının 39 numarası var mıdır
+__label__stok_sorgulama large beden mont bulabilir miyim
+__label__stok_sorgulama bu renk tükenmiş olabilir mi
+__label__stok_sorgulama s bedeni ne zaman gelir
+__label__stok_sorgulama bu ürün tekrar stoğa girecek mi
+
+__label__iade_sorgulama iade politikası nedir (return_policy için)
+__label__iade_sorgulama iade şartlarınız nelerdir
+__label__iade_sorgulama ürünü kaç gün içinde değiştirebilirim (return_policy için)
+__label__iade_sorgulama değişim ücretli mi
+__label__iade_sorgulama aldığım ürünü iade etmek istiyorum nasıl yapacağım
+__label__iade_sorgulama iade politikası hakkında bilgi verir misiniz
+__label__iade_sorgulama değişim şartları nelerdir
+__label__iade_sorgulama ürünü kaç gün içinde iade edebilirim
+__label__iade_sorgulama iade kargo ücreti kime ait
+__label__iade_sorgulama online alınan ürün mağazadan değişir mi
+__label__iade_sorgulama para iadesi yapıyor musunuz
+__label__iade_sorgulama hangi durumlarda iade kabul etmiyorsunuz
+
+__label__ürün_malzeme_sorma bu pantolonun kumaşı nedir (material_composition için)
+__label__ürün_malzeme_sorma deri ceketin içeriğinde ne var (material_composition için)
+__label__ürün_malzeme_sorma ipek gömlek hangi malzemeden yapılmış (material_composition için)
+__label__ürün_malzeme_sorma ürün içeriği hakkında bilgi
+__label__ürün_malzeme_sorma malzeme kompozisyonu nedir
+__label__ürün_malzeme_sorma bu pantolon ne kumaşından yapılmış
+__label__ürün_malzeme_sorma deri ceketin malzemesi nedir
+__label__ürün_malzeme_sorma ipek gömleğin içeriği %kaç ipek
+__label__ürün_malzeme_sorma ürünün yapımında hangi materyaller kullanıldı
+__label__ürün_malzeme_sorma kumaş kompozisyonunu öğrenebilir miyim
+__label__ürün_malzeme_sorma bu ürün vegan mı (malzemeye göre cevaplanabilir)
+__label__ürün_malzeme_sorma alerjen içerir mi (malzemeye göre cevaplanabilir)
+
+# __label__ürün_bilgisi_sorma'yı genel tutabiliriz, __label__ürün_malzeme_sorma daha spesifik olabilir.
+__label__ürün_bilgisi_sorma bunun özellikleri nelerdir
+__label__ürün_bilgisi_sorma bu ürün hakkında daha fazla detay verir misiniz
+__label__ürün_bilgisi_sorma şu modelin açıklaması var mı (description ve product_link için)
+__label__ürün_bilgisi_sorma bu ürünle ilgili daha fazla bilgi alabilir miyim
+__label__ürün_bilgisi_sorma şu modelin açıklamasını okuyabilir miyim
+__label__ürün_bilgisi_sorma bu ürün ne işe yarıyor
+__label__ürün_bilgisi_sorma bana bu ürünü anlatır mısın
+__label__ürün_bilgisi_sorma ürünün kullanım amacı nedir
+__label__ürün_bilgisi_sorma bu ürünün avantajları neler
+
+__label__tel_no_sorma telefon numaranız kaç (whatsapp_number veya genel phone için)
+__label__tel_no_sorma size hangi numaradan ulaşabilirim
+__label__tel_no_sorma whatsapp hattınız nedir (whatsapp_number için)
+__label__tel_no_sorma email adresiniz var mı (email için)
+__label__tel_no_sorma iletişim bilgilerinizi alabilir miyim
+__label__tel_no_sorma telefon numaranız nedir acaba
+__label__tel_no_sorma size hangi numaradan ulaşsam daha hızlı olur
+__label__tel_no_sorma whatsapp üzerinden yazabilir miyim numaranız kaç
+__label__tel_no_sorma e-posta adresinizi öğrenebilir miyim
+__label__tel_no_sorma müşteri hizmetleri telefonunuz var mı
+__label__tel_no_sorma yetkili birine nasıl ulaşırım
+__label__tel_no_sorma mail atsam bakar mısınız
+
+__label__kargo_bilgisi_sorma kargo hakkında bilgi alabilir miyim (shipping_info için)
+__label__kargo_bilgisi_sorma kargo ücretli mi
+__label__kargo_bilgisi_sorma kargonuz kaç günde teslim ediyor
+__label__kargo_bilgisi_sorma gönderim seçenekleri nelerdir (shipping_info için)
+__label__kargo_bilgisi_sorma kargo ne kadar sürer
+__label__kargo_bilgisi_sorma kargo ücreti var mı varsa ne kadar
+__label__kargo_bilgisi_sorma hangi kargo firmasıyla gönderiyorsunuz
+__label__kargo_bilgisi_sorma gönderim politikanız hakkında bilgi
+__label__kargo_bilgisi_sorma kapıda ödeme ile kargo alabilir miyim (payment_options ile de ilgili)
+__label__kargo_bilgisi_sorma ücretsiz kargo limitiniz nedir
+__label__kargo_bilgisi_sorma yurt dışına kargo var mı
+
+__label__calisma_saatleri_sorma çalışma saatleriniz nedir (opening_hours için)
+__label__calisma_saatleri_sorma bugün kaça kadar açıksınız
+__label__calisma_saatleri_sorma pazar günü açık mısınız
+__label__calisma_saatleri_sorma mağazanız ne zaman açılıyor
+__label__calisma_saatleri_sorma ne zaman açıksınız
+__label__calisma_saatleri_sorma bugün saat kaça kadar hizmet veriyorsunuz
+__label__calisma_saatleri_sorma pazar günleri açık mısınız
+__label__calisma_saatleri_sorma mağazanızın açılış kapanış saatleri nedir
+__label__calisma_saatleri_sorma öğle arası veriyor musunuz
+__label__calisma_saatleri_sorma resmi tatillerde çalışma durumunuz nedir
+
+__label__odeme_yontemleri_sorma ödeme seçenekleri neler (payment_options için)
+__label__odeme_yontemleri_sorma kredi kartıyla ödeme yapabilir miyim
+__label__odeme_yontemleri_sorma taksit imkanı var mı
+__label__odeme_yontemleri_sorma ne şekilde ödeme yapabilirim
+__label__odeme_yontemleri_sorma kredi kartı geçerli mi acaba
+__label__odeme_yontemleri_sorma taksit yapıyor musunuz
+__label__odeme_yontemleri_sorma hangi kartlara taksit var
+__label__odeme_yontemleri_sorma havale ile ödeme mümkün mü
+__label__odeme_yontemleri_sorma online ödeme alıyor musunuz
+__label__odeme_yontemleri_sorma kapıda ödeme kabul ediyor musunuz
+
+__label__kapsam_disi bugün hava nasıl olacak
+__label__kapsam_disi bana bir fıkra anlat
+__label__kapsam_disi en sevdiğin renk ne
+__label__kapsam_disi nasılsın (eğer __label__selamlama sadece ilk merhaba içinse, sohbetin ortasındaki "nasılsın" kapsam dışı olabilir)
+__label__kapsam_disi bugün hava durumu nasıl
+__label__kapsam_disi bana bir fıkra anlatır mısın
+__label__kapsam_disi en sevdiğin renk hangisi
+__label__kapsam_disi sen bir robot musun
+__label__kapsam_disi kimsin sen
+__label__kapsam_disi yemek tarifi istiyorum
+__label__kapsam_disi en yakın nöbetçi eczane nerede
+__label__kapsam_disi dolar ne kadar oldu
+__label__kapsam_disi bu mesajı anladın mı
+__label__kapsam_disi saçma sapan şeyler işte
+__label__kapsam_disi alakasız bir konu hakkında konuşalım
+__label__kapsam_disi bu bir test mesajıdır
+__label__kapsam_disi sadece deneme yapıyorum
+__label__kapsam_disi ne yapıyorsun
+__label__kapsam_disi canım sıkıldı
+
+
+# --- Sipariş Durumu Sorgulama (Bu niyetin cevabı işletmeye göre değişecek) ---
+# (Mevcut örneklerinize ek olarak)
+__label__siparis_durumu_sorma siparişim kargoya verildi mi
+__label__siparis_durumu_sorma kargomun takip numarasını alabilir miyim
+__label__siparis_durumu_sorma siparişim hakkında bilgi almak istiyorum
+__label__siparis_durumu_sorma ürünüm ne zaman teslim edilecek
+__label__siparis_durumu_sorma sipariş numaram 12345 durumu nedir
+# Eğer işletme sipariş takibi sunmuyorsa, bot bunu belirtmeli.
+
+
+# --- Öneri İsteme (Bu niyetin cevabı daha karmaşık bir mantık gerektirebilir) ---
+# (Mevcut örneklerinize ek olarak)
+__label__oneri_isteme bana bir ürün tavsiye eder misin
+__label__oneri_isteme hangi pantolonu önerirsiniz
+__label__oneri_isteme en popüler ürününüz hangisi
+__label__oneri_isteme buna benzer başka ne var elinizde
+__label__oneri_isteme hediye olarak ne alabilirim
+__label__oneri_isteme bu gömlekle hangi pantolon iyi gider
+
+# --- YENİ NİYET: Web Sitesi Sorgulama (business_info.website için) ---
+__label__websitesi_sorma web sitenizin adresi nedir
+__label__websitesi_sorma internet siteniz var mı
+__label__websitesi_sorma online mağazanızın linkini alabilir miyim
+__label__websitesi_sorma ürünlerinize nereden bakabilirim online olarak
+__label__websitesi_sorma sitenizden sipariş verebiliyor muyuz
