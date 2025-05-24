@@ -2,7 +2,3 @@ nlu_model.bin filter=lfs diff=lfs merge=lfs -text
 *.bin filter=lfs diff=lfs merge=lfs -text
 *.ftz filter=lfs diff=lfs merge=lfs -text
 train_nlu.txt filter=lfs diff=lfs merge=lfs -text
-\# filter=lfs diff=lfs merge=lfs -text
-Veya filter=lfs diff=lfs merge=lfs -text
-spesifik filter=lfs diff=lfs merge=lfs -text
-olarak filter=lfs diff=lfs merge=lfs -text
