@@ -1,0 +1,9 @@
+--- LIFESPAN (FILE DEBUG) --- START --- 2025-05-21 18:31:01.140595
+Attempting to load Zeyrek...
+Zeyrek loaded: <zeyrek.morphology.MorphAnalyzer object at 0x107dc9370>
+Attempting to load NLU model from /Users/yasar/Documents/VsStudioProjelerim/nlu_model.bin...
+NLU model loaded: <fasttext.FastText._FastText object at 0x1323d2a00>
+CRITICAL_RESOURCES_LOADED is now: True
+Processing DB product map...
+--- LIFESPAN --- YIELD --- 2025-05-21 18:31:03.735981
+--- LIFESPAN --- SHUTDOWN --- 2025-05-21 18:38:07.039224
