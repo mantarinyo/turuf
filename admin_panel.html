@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+        
+        .nav {
+            background: #ecf0f1;
+            padding: 15px 30px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        .nav button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .nav button:hover {
+            background: #2980b9;
+        }
+        
+        .nav button.active {
+            background: #27ae60;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .table th {
+            background: #34495e;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status-healthy {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+        
+        .status-warning {
+            background: #fef9e7;
+            color: #f39c12;
+        }
+        
+        .status-error {
+            background: #fadbd8;
+            color: #e74c3c;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+        
+        .error {
+            background: #fadbd8;
+            color: #e74c3c;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .refresh-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .refresh-btn:hover {
+            background: #229954;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-buttons {
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        .form-buttons button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Chatbot Admin Panel</h1>
+            <p>Tenant Yönetimi & Sistem İzleme</p>
+        </div>
+        
+        <div class="nav">
+            <button class="active" onclick="showSection('dashboard')">📊 Dashboard</button>
+            <button onclick="showSection('tenants')">🏢 Tenants</button>
+            <button onclick="showSection('products')">📦 Ürün Yönetimi</button>
+            <button onclick="showSection('analytics')">📈 Analytics</button>
+            <button onclick="showSection('billing')">💰 Billing</button>
+            <button onclick="showSection('health')">🏥 System Health</button>
+        </div>
+        
+        <div class="content">
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="section">
+                <div class="card">
+                    <h3>📊 Genel Durum</h3>
+                    <button class="refresh-btn" onclick="loadDashboard()">🔄 Yenile</button>
+                    <div id="dashboard-content">
+                        <div class="loading">Yükleniyor...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Section -->
+            <div id="products" class="section hidden">
+                <div class="card">
+                    <h3>📦 Ürün Yönetimi</h3>
+                    <div style="margin-bottom: 20px;">
+                        <button class="refresh-btn" onclick="loadProducts()">🔄 Ürünleri Yenile</button>
+                        <button class="refresh-btn" onclick="showAddProduct()" style="background: #27ae60;">➕ Ürün Ekle</button>
+                        <input type="text" id="product-search" placeholder="Ürün ara..." style="padding: 8px; margin: 0 10px; border: 1px solid #ddd; border-radius: 4px; width: 200px;">
+                        <button class="refresh-btn" onclick="searchProducts()">🔍 Ara</button>
+                    </div>
+                    <div id="products-content">
+                        <div class="loading">Yükleniyor...</div>
+                    </div>
+                </div>
+                
+                <!-- Add Product Modal -->
+                <div id="add-product-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <h3>➕ Yeni Ürün Ekle</h3>
+                        <form id="add-product-form">
+                            <div class="form-group">
+                                <label>Ürün Kodu:</label>
+                                <input type="text" id="new-product-code" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ürün Adı:</label>
+                                <input type="text" id="new-product-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Renk:</label>
+                                <input type="text" id="new-product-color">
+                            </div>
+                            <div class="form-group">
+                                <label>Normal Fiyat (₺):</label>
+                                <input type="number" id="new-product-price" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label>İndirim Oranı (%):</label>
+                                <input type="number" id="new-product-discount" min="0" max="100" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Kategori:</label>
+                                <select id="new-product-category">
+                                    <option value="Pijama Takımları">Pijama Takımları</option>
+                                    <option value="Gecelikler">Gecelikler</option>
+                                    <option value="Sabahlıklar">Sabahlıklar</option>
+                                    <option value="Elbiseler">Elbiseler</option>
+                                    <option value="Tulumlar">Tulumlar</option>
+                                    <option value="Şort Takımları">Şort Takımları</option>
+                                    <option value="Kapri Takımları">Kapri Takımları</option>
+                                    <option value="Hamile & Lohusa">Hamile & Lohusa</option>
+                                </select>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" onclick="hideAddProduct()">❌ İptal</button>
+                                <button type="submit">✅ Ekle</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tenants Section -->
+            <div id="tenants" class="section hidden">
+                <div class="card">
+                    <h3>🏢 Tenant Kullanım Özeti</h3>
+                    <button class="refresh-btn" onclick="loadTenants()">🔄 Yenile</button>
+                    <div id="tenants-content">
+                        <div class="loading">Yükleniyor...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Section -->
+            <div id="analytics" class="section hidden">
+                <div class="card">
+                    <h3>📈 Sistem Analytics</h3>
+                    <button class="refresh-btn" onclick="loadAnalytics()">🔄 Yenile</button>
+                    <div id="analytics-content">
+                        <div class="loading">Yükleniyor...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Billing Section -->
+            <div id="billing" class="section hidden">
+                <div class="card">
+                    <h3>💰 Faturalama</h3>
+                    <div style="margin-bottom: 20px;">
+                        <label for="tenant-id">Tenant ID:</label>
+                        <input type="number" id="tenant-id" value="1" style="padding: 8px; margin: 0 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <button class="refresh-btn" onclick="loadBilling()">💰 Fatura Hesapla</button>
+                    </div>
+                    <div id="billing-content">
+                        <div class="loading">Tenant ID seçin ve "Fatura Hesapla" butonuna tıklayın</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Health Section -->
+            <div id="health" class="section hidden">
+                <div class="card">
+                    <h3>🏥 Sistem Sağlığı</h3>
+                    <button class="refresh-btn" onclick="loadHealth()">🔄 Yenile</button>
+                    <div id="health-content">
+                        <div class="loading">Yükleniyor...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Update active button
+            document.querySelectorAll('.nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Load section data
+            switch(sectionName) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'tenants':
+                    loadTenants();
+                    break;
+                case 'products':
+                    loadProducts();
+                    break;
+                case 'analytics':
+                    loadAnalytics();
+                    break;
+                case 'health':
+                    loadHealth();
+                    break;
+            }
+        }
+        
+        // API calls
+        async function apiCall(endpoint) {
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                return { error: error.message };
+            }
+        }
+        
+        // Dashboard
+        async function loadDashboard() {
+            const content = document.getElementById('dashboard-content');
+            content.innerHTML = '<div class="loading">Yükleniyor...</div>';
+            
+            const [analytics, tenants] = await Promise.all([
+                apiCall('/analytics'),
+                apiCall('/tenants/usage/summary')
+            ]);
+            
+            if (analytics.error || tenants.error) {
+                content.innerHTML = `<div class="error">Hata: ${analytics.error || tenants.error}</div>`;
+                return;
+            }
+            
+            const stats = [
+                { label: 'Toplam Sorgu', value: analytics.total_requests || 0 },
+                { label: 'Aktif Tenant', value: tenants.data?.summary?.total_tenants || 0 },
+                { label: 'Ort. Cevap Süresi', value: `${analytics.avg_response_time_ms || 0}ms` },
+                { label: 'Sistem Uptime', value: `${Math.floor((analytics.uptime_seconds || 0) / 3600)} saat` }
+            ];
+            
+            content.innerHTML = `
+                <div class="stats-grid">
+                    ${stats.map(stat => `
+                        <div class="stat-card">
+                            <div class="stat-number">${stat.value}</div>
+                            <div class="stat-label">${stat.label}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <h4 style="margin: 20px 0 10px 0; color: #2c3e50;">En Çok Kullanılan Intentler</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Intent</th>
+                            <th>Kullanım Sayısı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Object.entries(analytics.top_intents || {}).map(([intent, count]) => `
+                            <tr>
+                                <td>${intent}</td>
+                                <td>${count}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        // Tenants
+        async function loadTenants() {
+            const content = document.getElementById('tenants-content');
+            content.innerHTML = '<div class="loading">Yükleniyor...</div>';
+            
+            const data = await apiCall('/tenants/usage/summary');
+            
+            if (data.error) {
+                content.innerHTML = `<div class="error">Hata: ${data.error}</div>`;
+                return;
+            }
+            
+            content.innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">${data.data?.summary?.total_tenants || 0}</div>
+                        <div class="stat-label">Toplam Tenant</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${data.data?.summary?.total_queries || 0}</div>
+                        <div class="stat-label">Toplam Sorgu</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${data.data?.summary?.total_energy || 0}</div>
+                        <div class="stat-label">Toplam Enerji</div>
+                    </div>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Tenant ID</th>
+                            <th>İşletme Adı</th>
+                            <th>Plan</th>
+                            <th>Sorgu Sayısı</th>
+                            <th>Kullanım %</th>
+                            <th>Enerji</th>
+                            <th>Ort. Cevap Süresi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${(data.data?.tenants || []).map(tenant => `
+                            <tr>
+                                <td>${tenant.tenant_id}</td>
+                                <td>${tenant.business_name}</td>
+                                <td><span class="status-badge status-healthy">${tenant.billing_plan}</span></td>
+                                <td>${tenant.total_queries}</td>
+                                <td>${tenant.usage_percentage}%</td>
+                                <td>${tenant.total_energy}</td>
+                                <td>${tenant.avg_response_time}ms</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        // Analytics
+        async function loadAnalytics() {
+            const content = document.getElementById('analytics-content');
+            content.innerHTML = '<div class="loading">Yükleniyor...</div>';
+            
+            const data = await apiCall('/analytics');
+            
+            if (data.error) {
+                content.innerHTML = `<div class="error">Hata: ${data.error}</div>`;
+                return;
+            }
+            
+            content.innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">${data.total_requests || 0}</div>
+                        <div class="stat-label">Toplam İstek</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${data.avg_response_time_ms || 0}ms</div>
+                        <div class="stat-label">Ort. Cevap Süresi</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${data.requests_per_minute || 0}</div>
+                        <div class="stat-label">Dakikada İstek</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${Math.floor((data.uptime_seconds || 0) / 3600)}h</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+                
+                <h4 style="margin: 20px 0 10px 0; color: #2c3e50;">Hata İstatistikleri</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hata Türü</th>
+                            <th>Sayı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Object.entries(data.error_counts || {}).map(([error, count]) => `
+                            <tr>
+                                <td>${error}</td>
+                                <td>${count}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        // Billing
+        async function loadBilling() {
+            const tenantId = document.getElementById('tenant-id').value;
+            const content = document.getElementById('billing-content');
+            content.innerHTML = '<div class="loading">Fatura hesaplanıyor...</div>';
+            
+            const data = await apiCall(`/tenant/${tenantId}/billing`);
+            
+            if (data.error) {
+                content.innerHTML = `<div class="error">Hata: ${data.error}</div>`;
+                return;
+            }
+            
+            const billing = data.data;
+            content.innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">${billing.total_queries}</div>
+                        <div class="stat-label">Toplam Sorgu</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${billing.monthly_limit}</div>
+                        <div class="stat-label">Aylık Limit</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${billing.usage_percentage}%</div>
+                        <div class="stat-label">Kullanım</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">₺${billing.total_cost}</div>
+                        <div class="stat-label">Toplam Maliyet</div>
+                    </div>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Detay</th>
+                            <th>Değer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tenant ID</td>
+                            <td>${billing.tenant_id}</td>
+                        </tr>
+                        <tr>
+                            <td>Plan</td>
+                            <td>${billing.billing_plan}</td>
+                        </tr>
+                        <tr>
+                            <td>Dönem</td>
+                            <td>${billing.billing_period}</td>
+                        </tr>
+                        <tr>
+                            <td>Temel Ücret</td>
+                            <td>₺${billing.base_cost}</td>
+                        </tr>
+                        <tr>
+                            <td>Aşım Ücreti</td>
+                            <td>₺${billing.overage_cost}</td>
+                        </tr>
+                        <tr>
+                            <td>Toplam Enerji</td>
+                            <td>${billing.total_energy}</td>
+                        </tr>
+                        <tr>
+                            <td>Ort. Cevap Süresi</td>
+                            <td>${billing.avg_response_time}ms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        // Health
+        async function loadHealth() {
+            const content = document.getElementById('health-content');
+            content.innerHTML = '<div class="loading">Yükleniyor...</div>';
+            
+            const data = await apiCall('/health');
+            
+            if (data.error) {
+                content.innerHTML = `<div class="error">Hata: ${data.error}</div>`;
+                return;
+            }
+            
+            const services = Object.entries(data.services || {});
+            content.innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">${data.status}</div>
+                        <div class="stat-label">Sistem Durumu</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${services.length}</div>
+                        <div class="stat-label">Toplam Servis</div>
+                    </div>
+                </div>
+                
+                <h4 style="margin: 20px 0 10px 0; color: #2c3e50;">Servis Durumları</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Servis</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${services.map(([service, status]) => `
+                            <tr>
+                                <td>${service}</td>
+                                <td>
+                                    <span class="status-badge ${status === 'active' ? 'status-healthy' : 'status-error'}">
+                                        ${status}
+                                    </span>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+                    <strong>Son Güncelleme:</strong> ${data.timestamp}
+                </div>
+            `;
+        }
+        
+        // Products
+        async function loadProducts() {
+            const content = document.getElementById('products-content');
+            content.innerHTML = '<div class="loading">Yükleniyor...</div>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/products`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    content.innerHTML = `<div class="error">Hata: ${data.error}</div>`;
+                    return;
+                }
+                
+                content.innerHTML = `
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">${data.total || 0}</div>
+                            <div class="stat-label">Toplam Ürün</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.categories || 0}</div>
+                            <div class="stat-label">Kategori</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.avg_price || 0}₺</div>
+                            <div class="stat-label">Ort. Fiyat</div>
+                        </div>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Kod</th>
+                                <th>Ürün Adı</th>
+                                <th>Renk</th>
+                                <th>Kategori</th>
+                                <th>Fiyat</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(data.products || []).map(product => `
+                                <tr>
+                                    <td>${product.product_code}</td>
+                                    <td>${product.product_name}</td>
+                                    <td>${product.color || '-'}</td>
+                                    <td>${product.category}</td>
+                                    <td>
+                                        ${product.discounted_price ? 
+                                            `<s>${product.original_price}₺</s> <strong>${product.discounted_price}₺</strong>` : 
+                                            `${product.original_price}₺`
+                                        }
+                                    </td>
+                                    <td>
+                                        <button class="delete-btn" onclick="deleteProduct('${product.product_code}')">🗑️ Sil</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } catch (error) {
+                content.innerHTML = `<div class="error">Ürünler yüklenemedi: ${error.message}</div>`;
+            }
+        }
+        
+        async function searchProducts() {
+            const searchTerm = document.getElementById('product-search').value;
+            const content = document.getElementById('products-content');
+            content.innerHTML = '<div class="loading">Aranıyor...</div>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/products/search?q=${encodeURIComponent(searchTerm)}`);
+                const data = await response.json();
+                
+                if (data.products && data.products.length > 0) {
+                    content.innerHTML = `
+                        <h4>${data.products.length} ürün bulundu</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Kod</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Renk</th>
+                                    <th>Kategori</th>
+                                    <th>Fiyat</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.products.map(product => `
+                                    <tr>
+                                        <td>${product.product_code}</td>
+                                        <td>${product.product_name}</td>
+                                        <td>${product.color || '-'}</td>
+                                        <td>${product.category}</td>
+                                        <td>
+                                            ${product.discounted_price ? 
+                                                `<s>${product.original_price}₺</s> <strong>${product.discounted_price}₺</strong>` : 
+                                                `${product.original_price}₺`
+                                            }
+                                        </td>
+                                        <td>
+                                            <button class="delete-btn" onclick="deleteProduct('${product.product_code}')">🗑️ Sil</button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                } else {
+                    content.innerHTML = '<div class="error">Ürün bulunamadı</div>';
+                }
+            } catch (error) {
+                content.innerHTML = `<div class="error">Arama hatası: ${error.message}</div>`;
+            }
+        }
+        
+        function showAddProduct() {
+            document.getElementById('add-product-modal').classList.remove('hidden');
+        }
+        
+        function hideAddProduct() {
+            document.getElementById('add-product-modal').classList.add('hidden');
+            document.getElementById('add-product-form').reset();
+        }
+        
+        document.getElementById('add-product-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const productData = {
+                product_code: document.getElementById('new-product-code').value,
+                product_name: document.getElementById('new-product-name').value,
+                color: document.getElementById('new-product-color').value,
+                original_price: parseFloat(document.getElementById('new-product-price').value),
+                discount_rate: parseFloat(document.getElementById('new-product-discount').value),
+                category: document.getElementById('new-product-category').value
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/products`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(productData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert('Ürün başarıyla eklendi!');
+                    hideAddProduct();
+                    loadProducts();
+                } else {
+                    alert(`Hata: ${result.error}`);
+                }
+            } catch (error) {
+                alert(`Ürün eklenemedi: ${error.message}`);
+            }
+        });
+        
+        async function deleteProduct(productCode) {
+            if (!confirm(`${productCode} kodlu ürünü silmek istediğinizden emin misiniz?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/products/${productCode}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert('Ürün başarıyla silindi!');
+                    loadProducts();
+                } else {
+                    alert(`Hata: ${result.error}`);
+                }
+            } catch (error) {
+                alert(`Ürün silinemedi: ${error.message}`);
+            }
+        }
+        
+        // Auto-load dashboard on page load
+        window.onload = function() {
+            loadDashboard();
+        };
+    </script>
+</body>
+</html>
